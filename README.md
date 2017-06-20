@@ -7,6 +7,7 @@
 
 <p align="center" color="#6a737d">
 The boilerplate for making electron applications built with vue (pretty much what it sounds like).
+This a fork specialized for applications that should run in kiosk mode.
 </p>
 
 <div align="center">
@@ -18,14 +19,14 @@ The boilerplate for making electron applications built with vue (pretty much wha
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
-[![Build Status](https://semaphoreci.com/api/v1/simulatedgreg/electron-vue/branches/master/badge.svg)](https://semaphoreci.com/simulatedgreg/electron-vue)
+[![Build Status](https://semaphoreci.com/api/v1/emmanuelgeoffray/electron-vue/branches/master/badge.svg)](https://semaphoreci.com/emmanuelgeoffray/electron-vue)
 </div>
 
 ## Overview
 
 The aim of this project is to remove the need of manually setting up electron apps using vue. electron-vue takes advantage of `vue-cli` for scaffolding, `webpack` with `vue-loader`, `electron-packager` or `electron-builder`, and some of the most used plugins like `vue-router`, `vuex`, and so much more.
 
-#### Check out the detailed documentation [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
+#### Check out the detailed documentation [here](https://soixantecircuits.github.io/electron-vue/en/).
 
 Things you'll find in this boilerplate...
 
@@ -46,6 +47,7 @@ Things you'll find in this boilerplate...
 * ESLint \(with support for [`standard`](https://github.com/feross/standard) and [`airbnb-base`](https://github.com/airbnb/javascript)\)\*
 * Unit Testing \(with Karma + Mocha\)\*
 * End-to-end Testing \(with Spectron + Mocha\)\*
+* Settings that can be changed at runtime with [standard-settings](https://github.com:soixantecircuits/standard-settings)
 
 \*Customizable during vue-cli scaffolding
 

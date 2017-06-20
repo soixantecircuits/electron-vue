@@ -1,18 +1,32 @@
-![](../images/logo.png)
+<div align="center">
+<br>
+<img width="500" src="/docs/images/logo.png" alt="electron-vue">
+<br>
+<br>
+</div>
 
-> The boilerplate for making electron applications built with vue \(pretty much what it sounds like\).
+<p align="center" color="#6a737d">
+The boilerplate for making electron applications built with vue (pretty much what it sounds like).
+This a fork specialized for applications that should run in kiosk mode.
+</p>
 
-[![Build Status](https://semaphoreci.com/api/v1/simulatedgreg/electron-vue/branches/master/badge.svg)](https://semaphoreci.com/simulatedgreg/electron-vue)
+<div align="center">
+
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/uses-js.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/makes-people-smile.svg)](http://forthebadge.com)
+</div>
+
+<div align="center">
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/uses-js.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/makes-people-smile.svg)](http://forthebadge.com)
+[![Build Status](https://semaphoreci.com/api/v1/emmanuelgeoffray/electron-vue/branches/master/badge.svg)](https://semaphoreci.com/emmanuelgeoffray/electron-vue)
+</div>
 
 ## Overview
 
-The aim of this project is to remove the need of manually setting up electron apps using vue. electron-vue takes advantage of `vue-cli` for scaffolding, `webpack` with `vue-loader`, `electron-packager` or `electron-builder`, some of the most used plugins like `vue-router`, `vuex`, and so much more.
+The aim of this project is to remove the need of manually setting up electron apps using vue. electron-vue takes advantage of `vue-cli` for scaffolding, `webpack` with `vue-loader`, `electron-packager` or `electron-builder`, and some of the most used plugins like `vue-router`, `vuex`, and so much more.
 
-#### Check out the documentation [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
+#### Check out the detailed documentation [here](https://soixantecircuits.github.io/electron-vue/en/).
 
 Things you'll find in this boilerplate...
 
@@ -21,24 +35,25 @@ Things you'll find in this boilerplate...
 * Project scaffolding using [vue-cli](https://github.com/vuejs/vue-cli)
 * Ready to use Vue plugins \([axios](https://github.com/mzabriskie/axios), [vue-electron](https://github.com/SimulatedGREG/vue-electron), [vue-router](https://github.com/vuejs/vue-router), [vuex](https://github.com/vuejs/vuex)\)\*
 * Installed [vue-devtools](https://github.com/vuejs/vue-devtools) and [devtron](https://github.com/electron/devtron) tools for development
-* Ability to easily package your application using [electron-packager](https://github.com/electron-userland/electron-packager) or [electron-builder](https://github.com/electron-userland/electron-builder)\*
+* Ability to easily package your electron app using [electron-packager](https://github.com/electron-userland/electron-packager) or [electron-builder](https://github.com/electron-userland/electron-builder)\*
 * `appveyor.yml` and `.travis.yml` configurations for automated deployments with [electron-builder](https://github.com/electron-userland/electron-builder)\*
 * Ability to produce web output for browsers
-* Handy [NPM scripts](/npm_scripts.md)
+* Handy [NPM scripts](https://simulatedgreg.gitbooks.io/electron-vue/content/en/npm_scripts.html)
 * Use of [webpack](https://github.com/webpack/webpack) and [vue-loader](https://github.com/vuejs/vue-loader) with Hot Module Replacement
-* Process restarting when working in electron's `main` process
+* Process restarting when working in main process
 * HTML/CSS/JS pre-processor support with [vue-loader](https://github.com/vuejs/vue-loader/)
 * ES6 with [`stage-0`](https://babeljs.io/docs/plugins/preset-stage-0/) by default
 * Use of [`babili`](https://github.com/babel/babili) to remove the need of transpiling completely down to ES5
 * ESLint \(with support for [`standard`](https://github.com/feross/standard) and [`airbnb-base`](https://github.com/airbnb/javascript)\)\*
 * Unit Testing \(with Karma + Mocha\)\*
 * End-to-end Testing \(with Spectron + Mocha\)\*
+* Settings that can be changed at runtime with [standard-settings](https://github.com:soixantecircuits/standard-settings)
 
-\*Customizable during `vue-cli` scaffolding
+\*Customizable during vue-cli scaffolding
 
 ### Getting Started
 
-This boilerplate was built as a template for [`vue-cli`](https://github.com/vuejs/vue-cli) and includes options to customize your final scaffolded app. The use of `node@^7` or higher is required. electron-vue also officially recommends the [`yarn`](https://yarnpkg.org) package manager as it handles dependencies much better and can help reduce final build size with `yarn clean`.
+This boilerplate was built as a template for [vue-cli](https://github.com/vuejs/vue-cli) and includes options to customize your final scaffolded app. The use of `node@^7` or higher required. electron-vue also officially recommends the [`yarn`](https://yarnpkg.org) package manager as it handles dependencies much better and can help reduce final build size with `yarn clean`.
 
 ```bash
 # Install vue-cli and scaffold boilerplate
@@ -57,7 +72,7 @@ Make sure to check out [**A Note for Windows Users**](https://simulatedgreg.gitb
 
 ##### Wanting to use Vue 1?
 
-Just point to the `1.0` branch. Please note that electron-vue has officially deprecated the usage of `vue@^1`, so project structure, features, and documentation will reflect those changes \([**legacy documentation**](https://github.com/SimulatedGREG/electron-vue/tree/1.0/docs)\).
+Just point to the `1.0` branch. Please note that electron-vue has officially deprecated the usage of `vue@^1`, so project structure, features, and documentation will reflect those changes ([**legacy documentation**](https://github.com/SimulatedGREG/electron-vue/tree/1.0/docs)).
 
 ```bash
 vue init simulatedgreg/electron-vue#1.0 my-project
@@ -67,8 +82,8 @@ vue init simulatedgreg/electron-vue#1.0 my-project
 
 Make sure to take a look at the [documentation](https://simulatedgreg.gitbooks.io/electron-vue/content/). Here you will find useful information about configuration, project structure, and building your app. There's also a handy [FAQs](https://simulatedgreg.gitbooks.io/electron-vue/content/en/faqs.html) section.
 
-## Made with electron-vue
 
+## Made with electron-vue
 Take a look at some of the amazing projects built with electron-vue. Want to have your own project listed? Feel free to submit a pull request.
 
 * [**Surfbird**](https://github.com/surfbirdapp/surfbird): A Twitter client built on Electron and Vue
@@ -80,6 +95,3 @@ Take a look at some of the amazing projects built with electron-vue. Want to hav
 * [**Dynamoc**](https://github.com/ieiayaobb/dynamoc): Dynamoc is a GUI client for dynamodb-local, dynalite and AWS dynamodb
 * [**Dockeron**](https://github.com/dockeron/dockeron): A dockeron project, built on Electron + Vue.js for Docker
 * [**Easysubs**](https://github.com/matiastucci/easysubs): Download subtitles in a very fast and simple way
-
-
-
