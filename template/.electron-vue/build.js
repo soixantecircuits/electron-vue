@@ -7,6 +7,9 @@ const chalk = require('chalk')
 const del = require('del')
 {{#if_eq builder 'packager'}}
 const packager = require('electron-packager')
+const path = require('path')
+const fs = require('fs')
+const getPackageInfo = require('get-package-info')
 {{else}}
 const { spawn } = require('child_process')
 {{/if_eq}}
@@ -108,6 +111,19 @@ function bundleApp () {
       console.log(`\n${errorLog}${chalk.yellow('`electron-packager`')} says...\n`)
       console.log(err + '\n')
     } else {
+      if (buildConfig.platform === 'linux' || buildConfig.platform === 'all') {
+        // add buildVersion and appVersion
+        getPackageInfo(['version'], '.')
+        .then((result) => {
+          buildConfig.appVersion = buildConfig.appVersion || result.values.version
+          appPaths.forEach((appPath) => {
+            fs.writeFileSync(path.join(appPath, 'appVersion'), buildConfig.appVersion)
+          })
+          appPaths.forEach((appPath) => {
+            fs.writeFileSync(path.join(appPath, 'buildVersion'), buildConfig.buildVersion || buildConfig.appVersion)
+          })
+        })
+      }
       console.log(`\n${doneLog}\n`)
     }
   })

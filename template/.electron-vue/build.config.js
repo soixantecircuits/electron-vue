@@ -1,4 +1,5 @@
 const path = require('path')
+const gitInfo = require('git-info-sync')
 
 /**
  * `electron-packager` options
@@ -13,6 +14,7 @@ module.exports = {
   {{else}}
   asar: true,
   {{/if}}
+  buildVersion: gitInfo(['SHA']).SHA,
   dir: path.join(__dirname, '../'),
   icon: path.join(__dirname, '../build/icons/icon'),
   ignore: /(^\/(src|test|\.[a-z]+|README|yarn|static|dist\/web))|\.gitkeep/,

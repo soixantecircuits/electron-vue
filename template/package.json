@@ -129,6 +129,10 @@
     {{/if_eq}}
     {{/eslint}}
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    {{#if_eq builder 'packager'}}
+    "get-package-info": "^1.0.0",
+    "git-info-sync": "^0.0.3",
+    {{/if_eq}}
     "file-loader": "^0.11.1",
     "html-webpack-plugin": "^2.16.1",
     "json-loader": "^0.5.4",
