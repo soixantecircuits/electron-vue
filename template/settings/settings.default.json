@@ -1,3 +1,27 @@
 {
-  "customSetting" : "defaultCustomSetting"
+  "customSetting" : "defaultCustomSetting",
+  "window" : {
+    "width": 1920,
+    "height": 1080,
+    "kiosk": true,
+    "autoHideMenuBar": true,
+    "webPreferences": {
+      "plugins": true,
+      "directWrite": true,
+      "webSecurity": false,
+      "experimentalFeatures": false,
+      "experimentalCanvasFeatures": false,
+      "allowRunningInsecureContent": true,
+      "allowDisplayingInsecureContent": true
+    }
+  },
+  "appendSwitch": {
+    "--disable-pinch": "",
+    "--disable-touch-adjustment": ""
+  },
+  "appendArgument": [
+    "--overscroll-history-navigation=0",
+    "--ignore-gpu-blacklist"
+  ]
+
 }
