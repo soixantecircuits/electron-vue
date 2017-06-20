@@ -42,16 +42,20 @@ function createWindow () {
 
 global.settings = require('standard-settings').getSettings()
 
-Object.keys(global.settings.appendSwitch).forEach((key) => {
-  if (global.settings.appendSwitch[key] !== '') {
-    app.commandLine.appendSwitch(key, global.settings.appendSwitch[key])
-  } else {
-    app.commandLine.appendSwitch(key)
-  }
-})
-Object.values(global.settings.appendArgument).forEach((value) => {
-  app.commandLine.appendArgument(value)
-})
+if (global.settings.appendSwitch) {
+  Object.keys(global.settings.appendSwitch).forEach((key) => {
+    if (global.settings.appendSwitch[key] !== '') {
+      app.commandLine.appendSwitch(key, global.settings.appendSwitch[key])
+    } else {
+      app.commandLine.appendSwitch(key)
+    }
+  })
+}
+if (global.settings.appendArgument) {
+  Object.values(global.settings.appendArgument).forEach((value) => {
+    app.commandLine.appendArgument(value)
+  })
+}
 {{/if}}
 
 app.on('ready', createWindow)
