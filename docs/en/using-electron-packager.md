@@ -67,5 +67,8 @@ Further customization can be made at `.electron-vue/build.config.js` in accordan
 }
 ```
 
+### buildVersion and appVersion
 
+On Windows and OS X, buildVersion and appVersion are used as metadata, as explained in [electron-packager docs](https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#appversion).  
+On linux, two files are added inside the build folder, appVersion and buildVersion, containing respectively, the version number in your app's `pacakage.json` in appVersion, and the `SHA` from last commit in buildVersion.
 
