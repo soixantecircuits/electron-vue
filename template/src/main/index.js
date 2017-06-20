@@ -21,11 +21,16 @@ function createWindow () {
   /**
    * Initial window options
    */
-  mainWindow = new BrowserWindow({
+  let options = {
     height: 563,
     useContentSize: true,
     width: 1000
-  })
+  }
+
+  {{#if settings}}
+  options = require('assignment')(options, global.settings.window)
+  {{/if}}
+  mainWindow = new BrowserWindow(options)
 
   mainWindow.loadURL(winURL)
 
@@ -36,6 +41,21 @@ function createWindow () {
 {{#if settings}}
 
 global.settings = require('standard-settings').getSettings()
+
+if (global.settings.appendSwitch) {
+  Object.keys(global.settings.appendSwitch).forEach((key) => {
+    if (global.settings.appendSwitch[key] !== '') {
+      app.commandLine.appendSwitch(key, global.settings.appendSwitch[key])
+    } else {
+      app.commandLine.appendSwitch(key)
+    }
+  })
+}
+if (global.settings.appendArgument) {
+  Object.values(global.settings.appendArgument).forEach((value) => {
+    app.commandLine.appendArgument(value)
+  })
+}
 {{/if}}
 
 app.on('ready', createWindow)
