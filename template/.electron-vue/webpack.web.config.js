@@ -10,6 +10,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+{{#if settings}}
+const settings = require('standard-settings').getSettings()
+{{/if}}
+
 let webConfig = {
   devtool: '#cheap-module-eval-source-map',
   entry: {
@@ -95,6 +99,9 @@ let webConfig = {
       nodeModules: false
     }),
     new webpack.DefinePlugin({
+      {{#if settings}}
+      SETTINGS: JSON.stringify(settings),
+      {{/if}}
       'process.env.IS_WEB': 'true'
     }),
     new webpack.HotModuleReplacementPlugin(),

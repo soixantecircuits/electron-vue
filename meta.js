@@ -166,7 +166,8 @@ module.exports = {
     '.eslintrc.js': 'eslint',
     'appveyor.yml': 'builder === \'builder\'',
     '.travis.yml': 'builder === \'builder\'',
-    'settings/**': 'settings'
+    'settings/**': 'settings',
+    'src/renderer/lib/settings.js': 'settings'
   },
   complete (data) {
     getCurrentSHA(data.author).then(sha => {

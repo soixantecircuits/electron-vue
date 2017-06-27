@@ -39,10 +39,13 @@
 </template>
 
 <script>
+  {{#if settings}}
+  import settings from '@/lib/settings'
+
+  {{/if}}
   export default {
     data () {
       {{#if settings}}
-      let settings = require('electron').remote.getGlobal('settings'){{#if_eq eslintConfig 'airbnb'}} // eslint-disable-line{{/if_eq}}
       let customSetting
       if (settings) {
         customSetting = settings.customSetting
