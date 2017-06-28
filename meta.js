@@ -167,7 +167,9 @@ module.exports = {
     'appveyor.yml': 'builder === \'builder\'',
     '.travis.yml': 'builder === \'builder\'',
     'settings/**': 'settings',
-    'src/renderer/lib/settings.js': 'settings'
+    'src/renderer/lib/settings.js': 'settings',
+    'test/unit/specs/settings.spec.js': 'unit && settings',
+    'test/e2e/specs/settings.spec.js': 'e2e && settings'
   },
   complete (data) {
     getCurrentSHA(data.author).then(sha => {

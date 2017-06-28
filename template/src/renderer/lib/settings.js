@@ -3,7 +3,7 @@
 let settings = {}
 
 // Try to load electron remote
-if (process.env.IS_WEB) {
+if (process.env.IS_WEB || process.env.NODE_ENV === 'testing') {
   /* eslint-disable */
   settings = SETTINGS
   /* eslint-enable */
