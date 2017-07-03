@@ -7,6 +7,10 @@ const webpack = require('webpack')
 const baseConfig = require('../../.electron-vue/webpack.renderer.config')
 const projectRoot = path.resolve(__dirname, '../../src/renderer')
 
+{{#if settings}}
+const settings = require('standard-settings').getSettings()
+{{/if}}
+
 // Set BABEL_ENV to use proper preset config
 process.env.BABEL_ENV = 'test'
 
@@ -14,7 +18,11 @@ let webpackConfig = merge(baseConfig, {
   devtool: '#inline-source-map',
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"testing"'
+      {{#if settings}}
+      SETTINGS: JSON.stringify(settings),
+      {{/if}}
+      'process.env.NODE_ENV': '"testing"',
+      'global.GENTLY': false
     })
   ]
 })
