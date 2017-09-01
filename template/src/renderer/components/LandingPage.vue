@@ -24,6 +24,13 @@
           <button class="alt" @click="open('https://electron.atom.io/docs/')">Electron</button>
           <button class="alt" @click="open('https://vuejs.org/v2/guide/')">Vue.js</button>
         </div>
+      {{#isEnabled plugins 'vue-spacebro-client'}}
+        <div class="spacebro">
+          <div class="title alt">Spacebro</div>
+          <button @click="sendMessage()">Send message</button>
+          <button @click="sendMedia()">Send media</button>
+        </div>
+      {{/isEnabled}}
       </div>
     </main>
   </div>
@@ -36,6 +43,28 @@
     name: 'landing-page',
     components: { SystemInformation },
     methods: {
+      {{#isEnabled plugins 'vue-spacebro-client'}}
+      sendMessage () {
+        this.$spacebro.emit(this.$spacebro.config.client.out.outMessage.eventName, {
+          message: 'thank you'.split('').sort(function () { return 0.5 - Math.random() }).join('')
+        })
+      },
+      sendMedia () {
+        this.$spacebro.emit(this.$spacebro.config.client.out.outMedia.eventName, {
+          url: 'http://lorempixel.com/400/200/business/spacebro-is-' + 'awesome'.split('').sort(function () { return 0.5 - Math.random() }).join(''),
+          file: 'file.jpg',
+          type: 'image/jpg',
+          details: {
+            width: 320,
+            height: 240
+          },
+          meta: {
+            title: 'galaxy',
+            description: 'galaxy image'
+          }
+        })
+      },
+      {{/isEnabled}}
       open (link) {
         {{#isEnabled plugins 'vue-electron'}}this.$electron{{else}}require('electron'){{/isEnabled}}.shell.openExternal(link)
       }
@@ -102,12 +131,12 @@
     margin-bottom: 10px;
   }
 
-  .doc p {
+  p {
     color: black;
     margin-bottom: 10px;
   }
 
-  .doc button {
+  button {
     font-size: .8em;
     cursor: pointer;
     outline: none;

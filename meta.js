@@ -61,8 +61,8 @@ module.exports = {
     plugins: {
       type: 'checkbox',
       message: 'Select which Vue plugins to install',
-      choices: ['axios', 'vue-electron', 'vue-router', 'vuex'],
-      default: ['axios', 'vue-electron', 'vue-router', 'vuex']
+      choices: ['axios', 'vue-electron', 'vue-router', 'vuex', 'vue-spacebro-client'],
+      default: ['axios', 'vue-electron', 'vue-router', 'vuex', 'vue-spacebro-client']
     },
     eslint: {
       type: 'confirm',
@@ -135,7 +135,8 @@ module.exports = {
         'axios': '^0.16.1',
         'vue-electron': '^1.0.6',
         'vue-router': '^2.5.3',
-        'vuex': '^2.3.1'
+        'vuex': '^2.3.1',
+        'vue-spacebro-client': '^1.0.0'
       }
 
       if (Object.keys(plugins).length > 0) output += ',\n'
@@ -158,6 +159,7 @@ module.exports = {
     'src/renderer/components/LandingPageView/CurrentPage.vue': 'plugins[\'vue-router\']',
     'src/renderer/router/**/*': 'plugins[\'vue-router\']',
     'src/renderer/store/**/*': 'plugins[\'vuex\']',
+    'src/renderer/store/modules/Media.js': 'plugins[\'vuex\'] && plugins[\'vue-spacebro-client\']',
     'test/e2e/**/*': 'e2e',
     'test/unit/**/*': 'unit',
     '.electron-vue/build.config.js': 'builder === \'packager\'',

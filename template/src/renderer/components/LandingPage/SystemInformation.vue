@@ -34,16 +34,45 @@
         <div class="value">\{{ customSetting }}</div>
       </div>
       {{/if}}
+      {{#isEnabled plugins 'vue-spacebro-client'}}
+      <div class="item">
+        <div class="name">Spacebro message:</div>
+        <div class="value" id="message">\{{ message }}</div>
+      </div>
+      {{/isEnabled}}
     </div>
+    {{#isEnabled plugins 'vue-spacebro-client'}}
+    <img :src="media.url" :alt="media.meta.description"/></img>
+    {{/isEnabled}}
   </div>
 </template>
 
 <script>
+  {{#isEnabled plugins 'vue-spacebro-client'}}
+  {{#isEnabled plugins 'vuex'}}
+  import { mapState } from 'vuex'
+  {{/isEnabled}}
+  {{/isEnabled}}
   {{#if settings}}
   import settings from '@/lib/settings'
 
   {{/if}}
   export default {
+    {{#isEnabled plugins 'vue-spacebro-client'}}
+    {{#isEnabled plugins 'vuex'}}
+    computed: mapState({
+      media: state => state.Media.media
+    }),
+    {{/isEnabled}}
+    spacebroEvents: {
+      connect: function (data) {
+        this.$spacebro.emit(this.$spacebro.config.client.out.outMessage.eventName, {message: 'thank you'})
+      },
+      inMessage: function (data) {
+        this.message = data.message
+      }
+    },
+    {{/isEnabled}}
     data () {
       {{#if settings}}
       let customSetting
@@ -67,6 +96,9 @@
         {{#if settings}}
         customSetting: customSetting,
         {{/if}}
+        {{#isEnabled plugins 'vue-spacebro-client'}}
+        message: 'start',
+        {{/isEnabled}}
         vue: require('vue/package.json').version
       }
     }
@@ -82,6 +114,12 @@
     margin-top: 10px;
   }
 
+{{#isEnabled plugins 'vue-spacebro-client'}}
+  img {
+    margin-top: 10px;
+  }
+
+{{/isEnabled}}
   .items { margin-top: 8px; }
 
   .item {
