@@ -2,6 +2,12 @@ import Vue from 'vue'
 {{#isEnabled plugins 'axios'}}
 import axios from 'axios'
 {{/isEnabled}}
+{{#isEnabled plugins 'vue-spacebro-client'}}
+import VueSpacebroClient from 'vue-spacebro-client'
+{{#if settings}}
+import settings from '@/lib/settings'
+{{/if}}
+{{/isEnabled}}
 
 import App from './App'
 {{#isEnabled plugins 'vue-router'}}
@@ -9,12 +15,6 @@ import router from './router'
 {{/isEnabled}}
 {{#isEnabled plugins 'vuex'}}
 import store from './store'
-{{/isEnabled}}
-{{#isEnabled plugins 'vue-spacebro-client'}}
-import VueSpacebroClient from 'vue-spacebro-client'
-{{#if settings}}
-import settings from '@/lib/settings'
-{{/if}}
 {{/isEnabled}}
 
 {{#isEnabled plugins 'vue-electron'}}

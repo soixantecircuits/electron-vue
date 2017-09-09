@@ -65,7 +65,7 @@
     }),
     {{/isEnabled}}
     spacebroEvents: {
-      connect: function (data) {
+      connect: function () {
         this.$spacebro.emit(this.$spacebro.config.client.out.outMessage.eventName, {message: 'thank you'})
       },
       inMessage: function (data) {

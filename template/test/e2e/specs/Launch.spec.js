@@ -20,8 +20,8 @@ describe('Launch', function () {
   {{/if}}
   {{#isEnabled plugins 'vue-spacebro-client'}}
   it('gets message from spacebro', function () {
-    this.app.client.waitUntilTextExists('#message', 'thank you', 10000)
-    .then(return this.app.client.getText('#message').then(function (text) {
+    return this.app.client.waitUntilTextExists('#message', 'thank you', 10000)
+    .then(this.app.client.getText('#message').then(function (text) {
       expect(text).to.equal('thank you')
     }))
   })
