@@ -21,9 +21,9 @@ describe('Launch', function () {
   {{#isEnabled plugins 'vue-spacebro-client'}}
   it('gets message from spacebro', function () {
     this.app.client.waitUntilTextExists('#message', 'thank you', 10000)
-    return this.app.client.getText('#message').then(function (text) {
+    .then(return this.app.client.getText('#message').then(function (text) {
       expect(text).to.equal('thank you')
-    })
+    }))
   })
   {{/isEnabled}}
 })
