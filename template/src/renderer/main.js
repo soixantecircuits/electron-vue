@@ -27,7 +27,11 @@ Vue.config.productionTip = false
 
 {{#isEnabled plugins 'vue-spacebro-client'}}
 {{#if settings}}
+{{#isEnabled plugins 'vuex'}}
 Vue.use(VueSpacebroClient, settings.service.spacebro, store)
+{{else}}
+Vue.use(VueSpacebroClient, settings.service.spacebro)
+{{/isEnabled}}
 {{else}}
 let config = {
   host: 'spacebro.space',
@@ -56,7 +60,11 @@ let config = {
     "vue-example/outMessage => vue-example/inMessage"
   ]
 }
+{{#isEnabled plugins 'vuex'}}
 Vue.use(VueSpacebroClient, config, store)
+{{else}}
+Vue.use(VueSpacebroClient, config)
+{{/isEnabled}}
 {{/if}}
 
 {{/isEnabled}}

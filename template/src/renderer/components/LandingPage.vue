@@ -28,7 +28,9 @@
         <div class="spacebro">
           <div class="title alt">Spacebro</div>
           <button @click="sendMessage()">Send message</button>
+          {{#isEnabled plugins 'vuex'}}
           <button @click="sendMedia()">Send media</button>
+          {{/isEnabled}}
         </div>
       {{/isEnabled}}
       </div>

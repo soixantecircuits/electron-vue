@@ -42,7 +42,9 @@
       {{/isEnabled}}
     </div>
     {{#isEnabled plugins 'vue-spacebro-client'}}
+    {{#isEnabled plugins 'vuex'}}
     <img :src="media.url" :alt="media.meta.description"/></img>
+    {{/isEnabled}}
     {{/isEnabled}}
   </div>
 </template>
