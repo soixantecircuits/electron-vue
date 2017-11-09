@@ -17,7 +17,8 @@
   },
   "appendSwitch": {
     "--disable-pinch": "",
-    "--disable-touch-adjustment": ""
+    "--disable-touch-adjustment": "",
+    "--touch-events": ""
   },
   {{#isEnabled plugins 'vue-spacebro-client'}}
   "service": {
