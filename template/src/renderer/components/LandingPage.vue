@@ -33,6 +33,14 @@
           {{/isEnabled}}
         </div>
       {{/isEnabled}}
+        <div class="static">
+          <div class="title alt">Static assets</div>
+          <img id="static" src="static/static.png" alt="static asset">
+          <div>
+            Static assets can be accessed in <div class="value">static/</div>.<br/>
+          If you just need it in the rendered side, use <div class="value">src/renderer/assets</div>.
+          </div>
+        </div>
       </div>
     </main>
   </div>
@@ -155,5 +163,11 @@
   .doc button.alt {
     color: #42b983;
     background-color: transparent;
+  }
+
+  .value {
+    display: inline;
+    color: #35495e;
+    font-weight: bold;
   }
 </style>
