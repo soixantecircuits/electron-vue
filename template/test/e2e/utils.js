@@ -14,7 +14,7 @@ export default {
     this.app = new Application({
       path: electron,
       {{#isEnabled plugins 'standard-settings'}}
-      args: ['dist/electron/main.js', '--window.kiosk', 'false', '--window.width', '800'],
+      args: ['dist/electron/main.js', '--window.kiosk', 'false', '--window.width', '800', '--serviceWorker.enable', '0'],
       {{else}}
       args: ['dist/electron/main.js'],
       {{/isEnabled}}
