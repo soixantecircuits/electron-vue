@@ -82,6 +82,14 @@ vue init simulatedgreg/electron-vue#1.0 my-project
 
 Make sure to take a look at the [documentation](https://simulatedgreg.gitbooks.io/electron-vue/content/). Here you will find useful information about configuration, project structure, and building your app. There's also a handy [FAQs](https://simulatedgreg.gitbooks.io/electron-vue/content/en/faqs.html) section.
 
+## Developement
+
+### Testing
+
+The template is automatically tested on [Semaphore CI]().  
+To test locally, use `SEMAPHORE_PROJECT_DIR=./../../ ./tests/scaffold.sh default` for default config.  
+You can also test other configs. List of tested configs is in `tests/builds.json`.
+
 
 ## Made with electron-vue
 Take a look at some of the amazing projects built with electron-vue. Want to have your own project listed? Feel free add your project to the bottom of the list below then submit a pull request.
