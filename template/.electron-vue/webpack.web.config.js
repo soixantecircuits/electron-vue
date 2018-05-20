@@ -10,8 +10,30 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-{{#if settings}}
+{{#isEnabled plugins 'standard-settings'}}
 const settings = require('standard-settings').getSettings()
+{{/isEnabled}}
+
+{{#if serviceWorker}}
+var addAssetListInSW = function () {}
+addAssetListInSW.prototype.apply = function (compiler) {
+  compiler.plugin('emit', (compilation, callback) => {
+    let filename = 'service-worker.js'
+    let swCode = compilation.assets[filename].source()
+    delete compilation.assets[filename]
+    let assets = ['./', ...Object.keys(compilation.assets)]
+    const source = `
+            let compilationAssets = ${JSON.stringify(assets)}
+            ${swCode}
+          `.trim()
+
+    compilation.assets[filename] = {
+      source: () => source,
+      size: () => Buffer.byteLength(source, 'utf8')
+    }
+    callback()
+  })
+}
 {{/if}}
 
 let webConfig = {
@@ -99,13 +121,24 @@ let webConfig = {
       nodeModules: false
     }),
     new webpack.DefinePlugin({
-      {{#if settings}}
+      {{#isEnabled plugins 'standard-settings'}}
       SETTINGS: JSON.stringify(settings),
-      {{/if}}
+      {{/isEnabled}}
       'process.env.IS_WEB': 'true'
     }),
     new webpack.HotModuleReplacementPlugin(),
+    {{#if serviceWorker}}
+    new webpack.NoEmitOnErrorsPlugin(),
+    new CopyWebpackPlugin([
+      {
+        from: path.join(__dirname, '../src/renderer/lib/service-worker.js'),
+        to: path.join(__dirname, '../dist/web/')
+      }
+    ]),
+    new addAssetListInSW()
+    {{else}}
     new webpack.NoEmitOnErrorsPlugin()
+    {{/if}}
   ],
   output: {
     filename: '[name].js',

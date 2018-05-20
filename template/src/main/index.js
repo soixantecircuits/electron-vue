@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== 'development') {
 
 let mainWindow
 const winURL = process.env.NODE_ENV === 'development'
-  ? `http://localhost:9080`
+  ? `http://localhost:9081`
   : `file://${__dirname}/index.html`
 
 function createWindow () {
@@ -27,9 +27,9 @@ function createWindow () {
     width: 1000
   }
 
-  {{#if settings}}
+  {{#isEnabled plugins 'standard-settings'}}
   options = require('assignment')(options, global.settings.window)
-  {{/if}}
+  {{/isEnabled}}
   mainWindow = new BrowserWindow(options)
 
   mainWindow.loadURL(winURL)
@@ -38,7 +38,7 @@ function createWindow () {
     mainWindow = null
   })
 }
-{{#if settings}}
+{{#isEnabled plugins 'standard-settings'}}
 
 global.settings = require('standard-settings').getSettings()
 
@@ -56,7 +56,7 @@ if (global.settings.appendArgument) {
     app.commandLine.appendArgument(value)
   })
 }
-{{/if}}
+{{/isEnabled}}
 
 app.on('ready', createWindow)
 

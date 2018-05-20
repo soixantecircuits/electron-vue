@@ -4,9 +4,9 @@ import axios from 'axios'
 {{/isEnabled}}
 {{#isEnabled plugins 'vue-spacebro-client'}}
 import VueSpacebroClient from 'vue-spacebro-client'
-{{#if settings}}
+{{#isEnabled plugins 'standard-settings'}}
 import settings from '@/lib/settings'
-{{/if}}
+{{/isEnabled}}
 {{/isEnabled}}
 
 import App from './App'
@@ -16,6 +16,9 @@ import router from './router'
 {{#isEnabled plugins 'vuex'}}
 import store from './store'
 {{/isEnabled}}
+{{#if serviceWorker}}
+require('@/lib/sw-register')
+{{/if}}
 
 {{#isEnabled plugins 'vue-electron'}}
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
@@ -26,7 +29,7 @@ Vue.http = Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 {{#isEnabled plugins 'vue-spacebro-client'}}
-{{#if settings}}
+{{#isEnabled plugins 'standard-settings'}}
 {{#isEnabled plugins 'vuex'}}
 Vue.use(VueSpacebroClient, settings.service.spacebro, store)
 {{else}}
@@ -65,7 +68,7 @@ Vue.use(VueSpacebroClient, config, store)
 {{else}}
 Vue.use(VueSpacebroClient, config)
 {{/isEnabled}}
-{{/if}}
+{{/isEnabled}}
 
 {{/isEnabled}}
 /* eslint-disable no-new */

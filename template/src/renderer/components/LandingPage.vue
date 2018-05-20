@@ -7,6 +7,9 @@
           Welcome to your new project!
         </span>
         <system-information></system-information>
+        {{#if serviceWorker}}
+        <service-worker-information></service-worker-information>
+        {{/if}}
       </div>
 
       <div class="right-side">
@@ -48,10 +51,17 @@
 
 <script>
   import SystemInformation from './LandingPage/SystemInformation'
+  {{#if serviceWorker}}
+  import ServiceWorkerInformation from './LandingPage/ServiceWorkerInformation'
+  {{/if}}
 
   export default {
     name: 'landing-page',
+    {{#if serviceWorker}}
+    components: { SystemInformation, ServiceWorkerInformation },
+    {{else}}
     components: { SystemInformation },
+    {{/if}}
     methods: {
       {{#isEnabled plugins 'vue-spacebro-client'}}
       sendMessage () {
@@ -138,7 +148,7 @@
 
   .title.alt {
     font-size: 18px;
-    margin-bottom: 10px;
+    margin: 10px 0px;
   }
 
   p {

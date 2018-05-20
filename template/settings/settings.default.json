@@ -28,7 +28,7 @@
       "channelName": "media-stream",
       "client": {
         "name": "vue-example",
-        "description": "exemple app",
+        "description": "example app",
 				"in": {
 					"inMedia": {
 						"eventName": "inMedia",
@@ -61,6 +61,12 @@
     }
   },
   {{/isEnabled}}
+  {{#if serviceWorker}}
+  "serviceWorker": {
+    "enable": true,
+    "cacheFirst": false
+  },
+  {{/if}}
   "appendArgument": [
     "--overscroll-history-navigation=0",
     "--ignore-gpu-blacklist"

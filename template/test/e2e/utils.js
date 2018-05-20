@@ -13,11 +13,11 @@ export default {
     this.timeout(10000)
     this.app = new Application({
       path: electron,
-      {{#if settings}}
+      {{#isEnabled plugins 'standard-settings'}}
       args: ['dist/electron/main.js', '--window.kiosk', 'false', '--window.width', '800'],
       {{else}}
       args: ['dist/electron/main.js'],
-      {{/if}}
+      {{/isEnabled}}
       startTimeout: 10000,
       waitTimeout: 10000
     })

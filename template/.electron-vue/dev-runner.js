@@ -73,7 +73,7 @@ function startRenderer () {
       }
     )
 
-    server.listen(9080)
+    server.listen(9081)
   })
 }
 
@@ -115,10 +115,10 @@ function startMain () {
 
 function startElectron () {
   let args = ['--inspect=5858', path.join(__dirname, '../dist/electron/main.js')]
-  {{#if settings}}
+  {{#isEnabled plugins 'standard-settings'}}
   process.argv.splice(0, 2)
   args = args.concat(process.argv)
-  {{/if}}
+  {{/isEnabled}}
   electronProcess = spawn(electron, args)
 
   electronProcess.stdout.on('data', data => {

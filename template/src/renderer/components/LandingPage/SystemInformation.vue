@@ -28,12 +28,12 @@
         <div class="name">Platform:</div>
         <div class="value">\{{ platform }}</div>
       </div>
-      {{#if settings}}
+      {{#isEnabled plugins 'standard-settings'}}
       <div class="item">
         <div class="name">Custom Setting:</div>
         <div class="value">\{{ customSetting }}</div>
       </div>
-      {{/if}}
+      {{/isEnabled}}
       {{#isEnabled plugins 'vue-spacebro-client'}}
       <div class="item">
         <div class="name">Spacebro message:</div>
@@ -55,10 +55,10 @@
   import { mapState } from 'vuex'
   {{/isEnabled}}
   {{/isEnabled}}
-  {{#if settings}}
+  {{#isEnabled plugins 'standard-settings'}}
   import settings from '@/lib/settings'
 
-  {{/if}}
+  {{/isEnabled}}
   export default {
     {{#isEnabled plugins 'vue-spacebro-client'}}
     {{#isEnabled plugins 'vuex'}}
@@ -76,7 +76,7 @@
     },
     {{/isEnabled}}
     data () {
-      {{#if settings}}
+      {{#isEnabled plugins 'standard-settings'}}
       let customSetting
       if (settings) {
         customSetting = settings.customSetting
@@ -84,7 +84,7 @@
         customSetting = 'missing setting'
       }
 
-      {{/if}}
+      {{/isEnabled}}
       return {
         electron: process.versions['atom-shell'],
         {{#isEnabled plugins 'vue-router'}}
@@ -95,9 +95,9 @@
         path: '/',
         {{/isEnabled}}
         platform: require('os').platform(),
-        {{#if settings}}
+        {{#isEnabled plugins 'standard-settings'}}
         customSetting: customSetting,
-        {{/if}}
+        {{/isEnabled}}
         {{#isEnabled plugins 'vue-spacebro-client'}}
         message: 'start',
         {{/isEnabled}}

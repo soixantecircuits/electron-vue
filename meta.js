@@ -61,8 +61,8 @@ module.exports = {
     plugins: {
       type: 'checkbox',
       message: 'Select which Vue plugins to install',
-      choices: ['axios', 'vue-electron', 'vue-router', 'vuex', 'vue-spacebro-client'],
-      default: ['axios', 'vue-electron', 'vue-router', 'vuex', 'vue-spacebro-client']
+      choices: ['axios', 'vue-electron', 'vue-router', 'vuex', 'vue-spacebro-client', 'standard-settings'],
+      default: ['axios', 'vue-electron', 'vue-router', 'vuex', 'vue-spacebro-client', 'standard-settings']
     },
     eslint: {
       type: 'confirm',
@@ -118,9 +118,9 @@ module.exports = {
         }
       ]
     },
-    settings: {
+    serviceWorker: {
       type: 'confirm',
-      message: 'Setup settings with standard-settings?',
+      message: 'Setup service-worker?',
       require: true
     }
   },
@@ -136,7 +136,8 @@ module.exports = {
         'vue-electron': '^1.0.6',
         'vue-router': '^2.5.3',
         'vuex': '^2.3.1',
-        'vue-spacebro-client': '^1.0.0'
+        'vue-spacebro-client': '^1.0.0',
+        'standard-settings': '^1.1.8'
       }
 
       if (Object.keys(plugins).length > 0) output += ',\n'
@@ -160,6 +161,9 @@ module.exports = {
     'src/renderer/router/**/*': 'plugins[\'vue-router\']',
     'src/renderer/store/**/*': 'plugins[\'vuex\']',
     'src/renderer/store/modules/Media.js': 'plugins[\'vuex\'] && plugins[\'vue-spacebro-client\']',
+    'src/renderer/lib/sw-register.js': 'serviceWorker',
+    'src/renderer/lib/service-worker.js': 'serviceWorker',
+    'src/renderer/components/LandingPage/service-worker.vue': 'serviceWorker',
     'test/e2e/**/*': 'e2e',
     'test/unit/**/*': 'unit',
     '.electron-vue/build.config.js': 'builder === \'packager\'',
@@ -168,10 +172,10 @@ module.exports = {
     '.eslintrc.js': 'eslint',
     'appveyor.yml': 'builder === \'builder\'',
     '.travis.yml': 'builder === \'builder\'',
-    'settings/**': 'settings',
-    'src/renderer/lib/settings.js': 'settings',
-    'test/unit/specs/settings.spec.js': 'unit && settings',
-    'test/e2e/specs/settings.spec.js': 'e2e && settings'
+    'settings/**': 'plugins[\'standard-settings\']',
+    'src/renderer/lib/settings.js': 'plugins[\'standard-settings\']',
+    'test/unit/specs/settings.spec.js': 'unit && plugins[\'standard-settings\']',
+    'test/e2e/specs/settings.spec.js': 'e2e && plugins[\'standard-settings\']'
   },
   complete (data) {
     getCurrentSHA(data.author).then(sha => {

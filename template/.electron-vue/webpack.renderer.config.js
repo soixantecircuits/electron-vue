@@ -125,7 +125,17 @@ let rendererConfig = {
         : false
     }),
     new webpack.HotModuleReplacementPlugin(),
+    {{#if serviceWorker}}
+    new webpack.NoEmitOnErrorsPlugin(),
+    new CopyWebpackPlugin([
+      {
+        from: path.join(__dirname, '../src/renderer/lib/service-worker.js'),
+        to: path.join(__dirname, '../dist/electron/')
+      }
+    ])
+    {{else}}
     new webpack.NoEmitOnErrorsPlugin()
+    {{/if}}
   ],
   output: {
     filename: '[name].js',

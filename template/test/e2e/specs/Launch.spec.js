@@ -10,14 +10,14 @@ describe('Launch', function () {
         expect(title).to.equal('{{ name }}')
       })
   })
-  {{#if settings}}
+  {{#isEnabled plugins 'standard-settings'}}
   it('open window of width from commandLine arg', function () {
     return this.app.browserWindow.getBounds()
       .then(bounds => {
         expect(bounds.width).to.equal(800)
       })
   })
-  {{/if}}
+  {{/isEnabled}}
   {{#isEnabled plugins 'vue-spacebro-client'}}
   it('gets message from spacebro', function () {
     return this.app.client.waitUntilTextExists('#message', 'thank you', 10000)

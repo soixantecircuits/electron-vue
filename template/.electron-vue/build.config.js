@@ -7,13 +7,13 @@ const gitInfo = require('git-info-sync')
  */
 module.exports = {
   arch: 'x64',
-  {{#if settings}}
+  {{#isEnabled plugins 'standard-settings'}}
   asar: {
     unpackDir: 'settings'
   },
   {{else}}
   asar: true,
-  {{/if}}
+  {{/isEnabled}}
   buildVersion: gitInfo(['SHA']).SHA,
   dir: path.join(__dirname, '../'),
   icon: path.join(__dirname, '../build/icons/icon'),
