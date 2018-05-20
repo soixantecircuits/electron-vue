@@ -15,6 +15,7 @@
   * [Using Pre-Processors](using_pre-processors.md)
   * [Using Static Assets](using-static-assets.md)
   * [Read & Write Local Files](savingreading-local-files.md)
+  * [Service Worker](service-worker.md)
   * [Debugging](debugging-production.md)
 * [Building Your App](building_your_app.md)
   * [Using electron-packager](using-electron-packager.md)
