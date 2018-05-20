@@ -31,7 +31,7 @@ The aim of this project is to remove the need of manually setting up electron ap
 Things you'll find in this boilerplate...
 
 * Basic project structure with a **single** `package.json` setup
-* Detailed [documentation](https://soixantecircuits.gitbooks.io/electron-vue/content/)
+* Detailed [documentation](https://soixantecircuits.github.io/electron-vue/)
 * Project scaffolding using [vue-cli](https://github.com/vuejs/vue-cli)
 * Ready to use Vue plugins \([axios](https://github.com/mzabriskie/axios), [vue-electron](https://github.com/SimulatedGREG/vue-electron), [vue-router](https://github.com/vuejs/vue-router), [vuex](https://github.com/vuejs/vuex)\)\*
 * Installed [vue-devtools](https://github.com/vuejs/vue-devtools) and [devtron](https://github.com/electron/devtron) tools for development
