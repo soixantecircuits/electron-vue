@@ -1,0 +1,649 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>End-to-End Testing · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="meta.html" />
+    
+    
+    <link rel="prev" href="unittesting.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="getting_started.html">
+            
+                <a href="getting_started.html">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="project_structure.html">
+            
+                <a href="project_structure.html">
+            
+                    
+                    Project Structure
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="file-tree.html">
+            
+                <a href="file-tree.html">
+            
+                    
+                    File Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="renderer-process.html">
+            
+                <a href="renderer-process.html">
+            
+                    
+                    Renderer Process
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="main-process.html">
+            
+                <a href="main-process.html">
+            
+                    
+                    Main Process
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="webpack-configurations.html">
+            
+                <a href="webpack-configurations.html">
+            
+                    
+                    Webpack Configurations
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="development.html">
+            
+                <a href="development.html">
+            
+                    
+                    Development
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="entry_indexhtml.html">
+            
+                <a href="entry_indexhtml.html">
+            
+                    
+                    Entry index.html
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="vue_accessories.html">
+            
+                <a href="vue_accessories.html">
+            
+                    
+                    Vue Plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="npm_scripts.html">
+            
+                <a href="npm_scripts.html">
+            
+                    
+                    NPM Scripts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="using_css_frameworks.html">
+            
+                <a href="using_css_frameworks.html">
+            
+                    
+                    Using CSS Frameworks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="using_pre-processors.html">
+            
+                <a href="using_pre-processors.html">
+            
+                    
+                    Using Pre-Processors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="using-static-assets.html">
+            
+                <a href="using-static-assets.html">
+            
+                    
+                    Using Static Assets
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="savingreading-local-files.html">
+            
+                <a href="savingreading-local-files.html">
+            
+                    
+                    Read & Write Local Files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="service-worker.html">
+            
+                <a href="service-worker.html">
+            
+                    
+                    Service Worker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="debugging-production.html">
+            
+                <a href="debugging-production.html">
+            
+                    
+                    Debugging
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="building_your_app.html">
+            
+                <a href="building_your_app.html">
+            
+                    
+                    Building Your App
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="using-electron-packager.html">
+            
+                <a href="using-electron-packager.html">
+            
+                    
+                    Using electron-packager
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="using-electron-builder.html">
+            
+                <a href="using-electron-builder.html">
+            
+                    
+                    Using electron-builder
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="settings.html">
+            
+                <a href="settings.html">
+            
+                    
+                    Settings
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="testing.html">
+            
+                <a href="testing.html">
+            
+                    
+                    Testing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="unittesting.html">
+            
+                <a href="unittesting.html">
+            
+                    
+                    Unit Testing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.2" data-path="end-to-end_testing.html">
+            
+                <a href="end-to-end_testing.html">
+            
+                    
+                    End-to-End Testing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="meta.html">
+            
+                <a href="meta.html">
+            
+                    
+                    Meta
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="faqs.html">
+            
+                <a href="faqs.html">
+            
+                    
+                    FAQs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="new-releases.html">
+            
+                <a href="new-releases.html">
+            
+                    
+                    New Releases
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="migration-guide.html">
+            
+                <a href="migration-guide.html">
+            
+                    
+                    Migration Guide
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="contributing.html">
+            
+                <a href="contributing.html">
+            
+                    
+                    Contributing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >End-to-End Testing</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="end-to-end-testing">End-to-End Testing</h1>
+<p>electron-vue makes use of <a href="http://electron.atom.io/spectron/" target="_blank">Spectron</a> and the <a href="https://mochajs.org/" target="_blank">Mocha</a> (with <a href="http://chaijs.com/" target="_blank">Chai</a>) test framework for end-to-end testing. Mocha &amp; Chai APIs, including <code>expect</code>, <code>should</code>, and <code>assert</code>, are made available in global scope.</p>
+<h3 id="running-tests">Running tests</h3>
+<pre><code class="lang-bash"><span class="hljs-comment"># Begin Mocha</span>
+npm run e2e
+</code></pre>
+<h5 id="note">Note</h5>
+<p>Before running end-to-end tests, a <code>npm run pack</code> is called to create a production build that Spectron can consume during tests.</p>
+<h3 id="file-structure">File Structure</h3>
+<pre><code>my-project
+&#x251C;&#x2500; test
+|  &#x251C;&#x2500; e2e
+&#x2502;  &#x2502;  &#x251C;&#x2500; specs/
+&#x2502;  &#x2502;  &#x251C;&#x2500; index.js
+&#x2514;&#x2500; &#x2514;&#x2500; &#x2514;&#x2500; utils.js
+</code></pre><p><strong>For the most part, you can ignore </strong><code>index.js</code><strong> and focus solely on writing </strong><code>specs/</code><strong>.</strong></p>
+<h4 id="specs"><code>specs/</code></h4>
+<p>Inside this directory is where actual tests are written. Thanks to the power of <code>babel-register</code>, you have full access to ES2015.</p>
+<h4 id="indexjs"><code>index.js</code></h4>
+<p>This file acts as the main entry to Mocha and gathers all tests written in <code>specs/</code> for testing.</p>
+<h4 id="utilsjs"><code>utils.js</code></h4>
+<p>Here you will find generic functions that could be of use throughout your <code>specs/</code>. Base functions include a <code>beforeEach</code> and <code>afterEach</code> that handle the electron creation/destruction process.</p>
+<h3 id="on-the-subject-of-spectron">On the subject of Spectron</h3>
+<p>Spectron is the official <a href="http://electron.atom.io" target="_blank">electron</a> testing framework that uses both <a href="https://sites.google.com/a/chromium.org/chromedriver/" target="_blank">ChromeDriver</a> and <a href="http://webdriver.io/" target="_blank">WebDriverIO</a> for manipulating DOM elements.</p>
+<h4 id="using-webdriverio">Using WebDriverIO</h4>
+<p>As stated in the Spectron <a href="https://github.com/electron/spectron#client" target="_blank">documentation</a>, access to <a href="http://webdriver.io/api.html" target="_blank">WebDriverIO APIs</a> can be accessed through <code>this.app.client</code>. Since electron-vue uses Mocha, the context of <code>this</code> is shared between <code>afterEach</code>, <code>beforeEach</code>, and <code>it</code>. Because of this, it is important to note that ES2015 arrow functions cannot not be used in certain situations as the context of <code>this</code> will be overwritten (<a href="https://mochajs.org/#arrow-functions" target="_blank">more info</a>).</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="unittesting.html" class="navigation navigation-prev " aria-label="Previous page: Unit Testing">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="meta.html" class="navigation navigation-next " aria-label="Next page: Meta">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"End-to-End Testing","level":"1.7.2","depth":2,"next":{"title":"Meta","level":"1.8","depth":1,"path":"meta.md","ref":"meta.md","articles":[{"title":"FAQs","level":"1.8.1","depth":2,"path":"faqs.md","ref":"faqs.md","articles":[]},{"title":"New Releases","level":"1.8.2","depth":2,"path":"new-releases.md","ref":"new-releases.md","articles":[]},{"title":"Migration Guide","level":"1.8.3","depth":2,"path":"migration-guide.md","ref":"migration-guide.md","articles":[]},{"title":"Contributing","level":"1.8.4","depth":2,"path":"contributing.md","ref":"contributing.md","articles":[]}]},"previous":{"title":"Unit Testing","level":"1.7.1","depth":2,"path":"unittesting.md","ref":"unittesting.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"end-to-end_testing.md","mtime":"2018-05-20T17:10:13.997Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-20T17:13:35.812Z"},"basePath":".","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
