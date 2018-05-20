@@ -21,8 +21,7 @@ For this example, we will use
 In your code, get the setting with 
 
 ```
-const remote = require('electron').remote
-settings = remote.getGlobal('settings')
+import settings from '@/lib/settings'
 console.log(settings.service.api.url)
 ```
 
