@@ -77,6 +77,9 @@
   },
 {{/if_eq}}
   "dependencies": {
+  {{#isEnabled plugins 'standard-settings'}}
+    "assignment": "^2.2.1",
+{{/isEnabled}}
     "vue": "^2.3.3"{{deps plugins}}
   },
   "devDependencies": {

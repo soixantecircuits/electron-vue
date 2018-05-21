@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import settings from '@/lib/settings'
 
 if (settings.serviceWorker.enable && 'serviceWorker' in navigator) {
