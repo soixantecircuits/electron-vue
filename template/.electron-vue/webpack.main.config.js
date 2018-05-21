@@ -8,6 +8,20 @@ const webpack = require('webpack')
 
 const BabiliWebpackPlugin = require('babili-webpack-plugin')
 
+{{#isEnabled plugins 'standard-settings'}}
+var NoOperationPlugin = function (pattern) {
+  const apply = function (compiler) {
+    compiler.plugin('emit', (compilation, callback) => {
+      compilation.fileDependencies.push(...pattern.path)
+      callback()
+    })
+  }
+  return {
+    apply
+  }
+}
+{{/isEnabled}}
+
 let mainConfig = {
   entry: {
     main: path.join(__dirname, '../src/main/index.js')
@@ -68,6 +82,24 @@ if (process.env.NODE_ENV !== 'production') {
       '__static': `"${path.join(__dirname, '../static').replace(/\\/g, '\\\\')}"`
     })
   )
+  {{#isEnabled plugins 'standard-settings'}}
+  let settings = require('standard-settings').getSettings()
+  let settingsFiles = [
+    path.join(__dirname, '../settings/settings.default.json'),
+    path.join(__dirname, '../settings/settings.json')
+  ]
+  if (settings.settings) {
+    let customFilePath = path.resolve(path.join(__dirname, '../'), settings.settings)
+    settingsFiles.push(customFilePath)
+  }
+  mainConfig.plugins.push(
+    new NoOperationPlugin(
+      {
+        path: settingsFiles
+      }
+    )
+  )
+  {{/isEnabled}}
 }
 
 /**

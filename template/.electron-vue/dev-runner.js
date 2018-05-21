@@ -116,8 +116,7 @@ function startMain () {
 function startElectron () {
   let args = ['--inspect=5858', path.join(__dirname, '../dist/electron/main.js')]
   {{#isEnabled plugins 'standard-settings'}}
-  process.argv.splice(0, 2)
-  args = args.concat(process.argv)
+  args = args.concat(process.argv.slice(2))
   {{/isEnabled}}
   electronProcess = spawn(electron, args)
 
