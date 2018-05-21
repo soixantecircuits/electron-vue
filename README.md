@@ -93,6 +93,9 @@ CI](https://semaphoreci.com/emmanuelgeoffray/electron-vue).
 To test locally, use `SEMAPHORE_PROJECT_DIR=./../../ ./tests/scaffold.sh default` for default config.  
 You can also test other configs. List of tested configs is in `tests/builds.json`.
 
+### Update documentation
+
+After modifiying the doc, update it for online use: `sh deploy-docs.sh`
 
 ## Made with electron-vue
 Take a look at some of the amazing projects built with electron-vue. Want to have your own project listed? Feel free add your project to the bottom of the list below then submit a pull request.
