@@ -137,7 +137,7 @@ module.exports = {
         'vue-router': '^2.5.3',
         'vuex': '^2.3.1',
         'vue-spacebro-client': '^1.0.0',
-        'standard-settings': '^1.1.8'
+        'standard-settings': '^1.1.15'
       }
 
       if (Object.keys(plugins).length > 0) output += ',\n'
