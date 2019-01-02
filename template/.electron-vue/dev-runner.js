@@ -142,7 +142,9 @@ function startElectron () {
     if (data.includes('Debugger listening on')) {
       electronLog(data, 'blue')  
     } else if (data.includes('Couldn\'t set selectedTextBackgroundColor from default') ||
-    data.includes('Could not instantiate: ProductRegistryImpl.Registry'))  {
+    data.includes('Could not instantiate: ProductRegistryImpl.Registry') ||
+    data.includes('Sending message to WebContents with') ||
+    data.includes('"Failed to load https://chrome-devtools-frontend.appspot.com/serve_file/')) {
       if(settings.electronMain.dev.showBareErrors) {
         electronLog(data, 'red')
       }
