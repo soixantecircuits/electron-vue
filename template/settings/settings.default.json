@@ -15,6 +15,11 @@
       "allowDisplayingInsecureContent": true
     }
   },
+  "electronMain": {
+    "dev":{
+      "showBareErrors": false
+    }
+  },
   "appendSwitch": {
     "--disable-pinch": "",
     "--disable-touch-adjustment": "",

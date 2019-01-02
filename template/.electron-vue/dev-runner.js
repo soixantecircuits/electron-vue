@@ -12,9 +12,12 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 const mainConfig = require('./webpack.main.config')
 const rendererConfig = require('./webpack.renderer.config')
 
+const settings = require('standard-settings').getSettings()
+
 let electronProcess = null
 let manualRestart = false
 let hotMiddleware
+
 
 function logStats (proc, data) {
   let log = ''
@@ -126,7 +129,7 @@ function startElectron () {
   } else if (process.env.npm_execpath.endsWith('npm-cli.js')) {
     args = args.concat(process.argv.slice(2))
   }
-  
+
   {{#isEnabled plugins 'standard-settings'}}
   args = args.concat(process.argv.slice(2))
   {{/isEnabled}}
@@ -136,7 +139,16 @@ function startElectron () {
     electronLog(data, 'blue')
   })
   electronProcess.stderr.on('data', data => {
-    electronLog(data, 'red')
+    if (data.includes('Debugger listening on')) {
+      electronLog(data, 'blue')  
+    } else if (data.includes('Couldn\'t set selectedTextBackgroundColor from default') ||
+    data.includes('Could not instantiate: ProductRegistryImpl.Registry'))  {
+      if(settings.electronMain.dev.showBareErrors) {
+        electronLog(data, 'red')
+      }
+    } else {
+      electronLog(data, 'red')
+    }
   })
 
   electronProcess.on('close', () => {
