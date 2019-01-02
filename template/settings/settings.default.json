@@ -20,6 +20,9 @@
       "showBareErrors": false
     }
   },
+  "openDevTools": true,
+  "simulateOutage": false,
+  "clearCache": false,
   "appendSwitch": {
     "--disable-pinch": "",
     "--disable-touch-adjustment": "",

@@ -29,6 +29,22 @@ function createWindow () {
 
   {{#isEnabled plugins 'standard-settings'}}
   options = require('assignment')(options, global.settings.window)
+  if (global.settings.simulateOutage) {
+    mainWindow.webContents.session.enableNetworkEmulation({offline: true})
+  }
+  if (global.settings.openDevTools) {
+    mainWindow.webContents.openDevTools()
+  }
+  if (global.settings.clearCache) {
+    console.warn('⚠️ - Option to clear cache set, cache will be cleared')
+    store.clear()
+    mainWindow.webContents.session.clearStorageData({}, () => {
+      mainWindow.webContents.session.clearCache(() => {
+        console.log('cache cleared.')
+        mainWindow.loadURL(winURL)
+      })
+    })
+  }
   {{/isEnabled}}
   mainWindow = new BrowserWindow(options)
 
