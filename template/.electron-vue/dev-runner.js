@@ -144,7 +144,8 @@ function startElectron () {
     } else if (data.includes('Couldn\'t set selectedTextBackgroundColor from default') ||
     data.includes('Could not instantiate: ProductRegistryImpl.Registry') ||
     data.includes('Sending message to WebContents with') ||
-    data.includes('"Failed to load https://chrome-devtools-frontend.appspot.com/serve_file/')) {
+    data.includes('"Failed to load https://chrome-devtools-frontend.appspot.com/serve_file/') ||
+    data.includes('"Extension server error: Object not found: <top>", source: chrome-devtools://devtools/bundled/inspector.js (7574)')) {
       if(settings.electronMain.dev.showBareErrors) {
         electronLog(data, 'red')
       }
