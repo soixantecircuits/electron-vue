@@ -20,7 +20,7 @@
       "showBareErrors": false
     }
   },
-  "openDevTools": true,
+  "openDevTools": false,
   "simulateOutage": false,
   "clearCache": false,
   "appendSwitch": {
