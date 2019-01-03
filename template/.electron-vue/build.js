@@ -113,7 +113,7 @@ function bundleApp () {
       console.log(`\n${errorLog}${chalk.yellow('`electron-packager`')} says...\n`)
       console.log(err + '\n')
     } else {
-      if (buildConfig.platform === 'linux' || buildConfig.platform === 'all') {
+      // if (buildConfig.platform === 'linux' || buildConfig.platform === 'all') {
         // add buildVersion and appVersion
         getPackageInfo(['version'], '.')
         .then((result) => {
@@ -125,7 +125,7 @@ function bundleApp () {
             fs.writeFileSync(path.join(appPath, 'buildVersion'), buildConfig.buildVersion || buildConfig.appVersion)
           })
         })
-      }
+      //}
       console.log(`\n${doneLog}\n`)
     }
   })
