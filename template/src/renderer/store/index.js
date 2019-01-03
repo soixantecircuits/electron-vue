@@ -8,13 +8,18 @@ import { createPersistedState, createSharedMutations } from 'vuex-electron'
 import modules from './modules'
 
 Vue.use(Vuex)
+{{#isEnabled plugins 'vuex-electron'}}
+var vuexPlugins
+if (!process.env.IS_WEB)) {
+  vuexPlugins = [createPersistedState(), createSharedMutations()]
+}
+{{/isEnabled}}
 
 export default new Vuex.Store({
   modules,
   {{#isEnabled plugins 'vuex-electron'}}
   plugins: [
-    createPersistedState(),
-    createSharedMutations()
+    ...vuexPlugins
   ],
   {{/isEnabled}}
   strict: process.env.NODE_ENV !== 'production'

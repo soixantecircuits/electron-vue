@@ -54,16 +54,16 @@ module.exports = {
       default: 'your-app'
     },
     appid: {
-        type: 'string',
-        required: true,
-        message: 'Application Id',
-        default: 'com.example.yourapp'
+      type: 'string',
+      required: true,
+      message: 'Application Id (no dash)',
+      default: 'com.example.yourapp'
     },
     appver: {
-        type: 'string',
-        required: true,
-        message: 'Application Version',
-        default: '0.0.1'
+      type: 'string',
+      required: true,
+      message: 'Application Version',
+      default: '0.0.1'
     },
     description: {
       type: 'string',
@@ -72,15 +72,15 @@ module.exports = {
       default: 'An electron-vue project'
     },
     usesass: {
-        type: 'confirm',
-        message: 'Use Sass / Scss?',
-        required: true
+      type: 'confirm',
+      message: 'Use Sass / Scss?',
+      required: true
     },
     plugins: {
       type: 'checkbox',
-      message: 'Select which Vue plugins to install',
+      message: 'Select which Vue plugins to install (vuex-electron not supported with vue-spacebro-client)',
       choices: ['axios', 'vue-electron', 'vue-router', 'vuex', 'vuex-electron', 'vue-spacebro-client', 'standard-settings'],
-      default: ['axios', 'vue-electron', 'vue-router', 'vuex', 'vuex-electron', 'vue-spacebro-client', 'standard-settings']
+      default: ['axios', 'vue-electron', 'vue-router', 'vuex', 'vue-spacebro-client', 'standard-settings']
     },
     eslint: {
       type: 'confirm',
@@ -113,16 +113,18 @@ module.exports = {
     unit: {
       type: 'confirm',
       message: 'Set up unit testing with Karma + Mocha?',
-      required: true
+      required: true,
+      default: false
     },
     e2e: {
       type: 'confirm',
       message: 'Set up end-to-end testing with Spectron + Mocha?',
-      require: true
+      require: true,
+      default: false
     },
     builder: {
       type: 'list',
-      message: 'What build tool would you like to use?',
+      message: 'What build tool would you like to use? Should be Electron packager for Interactive App',
       choices: [
         {
           name: 'electron-packager (https://github.com/electron-userland/electron-packager)',
