@@ -50,7 +50,20 @@ module.exports = {
     name: {
       type: 'string',
       required: true,
-      message: 'Application Name'
+      message: 'Application Name',
+      default: 'your-app'
+    },
+    appid: {
+      type: 'string',
+      required: true,
+      message: 'Application Id (no dash)',
+      default: 'com.example.yourapp'
+    },
+    appver: {
+      type: 'string',
+      required: true,
+      message: 'Application Version',
+      default: '0.0.1'
     },
     description: {
       type: 'string',
@@ -58,10 +71,15 @@ module.exports = {
       message: 'Project description',
       default: 'An electron-vue project'
     },
+    usesass: {
+      type: 'confirm',
+      message: 'Use Sass / Scss?',
+      required: true
+    },
     plugins: {
       type: 'checkbox',
-      message: 'Select which Vue plugins to install',
-      choices: ['axios', 'vue-electron', 'vue-router', 'vuex', 'vue-spacebro-client', 'standard-settings'],
+      message: 'Select which Vue plugins to install (vuex-electron not supported with vue-spacebro-client)',
+      choices: ['axios', 'vue-electron', 'vue-router', 'vuex', 'vuex-electron', 'vue-spacebro-client', 'standard-settings'],
       default: ['axios', 'vue-electron', 'vue-router', 'vuex', 'vue-spacebro-client', 'standard-settings']
     },
     eslint: {
@@ -73,7 +91,7 @@ module.exports = {
     eslintConfig: {
       when: 'eslint',
       type: 'list',
-      message: 'Which eslint config would you like to use?',
+      message: 'Which ESLint config would you like to use?',
       choices: [
         {
           name: 'Standard (https://github.com/feross/standard)',
@@ -81,9 +99,9 @@ module.exports = {
           short: 'Standard'
         },
         {
-          name: 'AirBNB (https://github.com/airbnb/javascript)',
+          name: 'Airbnb (https://github.com/airbnb/javascript)',
           value: 'airbnb',
-          short: 'AirBNB'
+          short: 'Airbnb'
         },
         {
           name: 'none (configure it yourself)',
@@ -94,17 +112,19 @@ module.exports = {
     },
     unit: {
       type: 'confirm',
-      message: 'Setup unit testing with Karma + Mocha?',
-      required: true
+      message: 'Set up unit testing with Karma + Mocha?',
+      required: true,
+      default: false
     },
     e2e: {
       type: 'confirm',
-      message: 'Setup end-to-end testing with Spectron + Mocha?',
-      require: true
+      message: 'Set up end-to-end testing with Spectron + Mocha?',
+      require: true,
+      default: false
     },
     builder: {
       type: 'list',
-      message: 'What build tool would you like to use?',
+      message: 'What build tool would you like to use? Should be Electron packager for Interactive App',
       choices: [
         {
           name: 'electron-packager (https://github.com/electron-userland/electron-packager)',
@@ -132,10 +152,11 @@ module.exports = {
     deps (plugins) {
       let output = ''
       let dependencies = {
-        'axios': '^0.16.1',
+        'axios': '^0.18.0',
         'vue-electron': '^1.0.6',
-        'vue-router': '^2.5.3',
-        'vuex': '^2.3.1',
+        'vue-router': '^3.0.1',
+        'vuex': '^3.0.1',
+        'vuex-electron': '^1.0.0',
         'vue-spacebro-client': '^1.0.0',
         'standard-settings': '^1.1.15'
       }

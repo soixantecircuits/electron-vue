@@ -2,7 +2,7 @@ const state = {
   media: {
     url: '',
     meta: {
-      description: 'Press "Send media" to show an image =>'
+      description: '⚠️ - Press "Send media" to show an image =>'
     }
   }
 }

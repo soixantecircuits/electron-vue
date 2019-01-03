@@ -12,7 +12,6 @@
 {{#isEnabled plugins 'vue-router'}}
 {{else}}
   import LandingPage from '@/components/LandingPage'
-
 {{/isEnabled}}
   export default {
     name: '{{ name }}'{{#isEnabled plugins 'vue-router'}}{{else}},{{/isEnabled}}

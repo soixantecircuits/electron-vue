@@ -12,7 +12,7 @@ const BabiliWebpackPlugin = require('babili-webpack-plugin')
 var NoOperationPlugin = function (pattern) {
   const apply = function (compiler) {
     compiler.plugin('emit', (compilation, callback) => {
-      compilation.fileDependencies.push(...pattern.path)
+      pattern.path.forEach(compilation.fileDependencies.add, compilation.fileDependencies)
       callback()
     })
   }

@@ -28,6 +28,10 @@ Vue.http = Vue.prototype.$http = axios
 {{/isEnabled}}
 Vue.config.productionTip = false
 
+{{#isEnabled plugins 'standard-settings'}}
+Vue.settings = Vue.prototype.$settings = settings
+{{/isEnabled}}
+
 {{#isEnabled plugins 'vue-spacebro-client'}}
 {{#isEnabled plugins 'standard-settings'}}
 {{#isEnabled plugins 'vuex'}}

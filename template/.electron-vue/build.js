@@ -79,6 +79,7 @@ function build () {
 
 function pack (config) {
   return new Promise((resolve, reject) => {
+    config.mode = 'production'
     webpack(config, (err, stats) => {
       if (err) reject(err.stack || err)
       else if (stats.hasErrors()) {
@@ -106,12 +107,13 @@ function pack (config) {
 
 {{#if_eq builder 'packager'}}
 function bundleApp () {
+  buildConfig.mode = 'production'
   packager(buildConfig, (err, appPaths) => {
     if (err) {
       console.log(`\n${errorLog}${chalk.yellow('`electron-packager`')} says...\n`)
       console.log(err + '\n')
     } else {
-      if (buildConfig.platform === 'linux' || buildConfig.platform === 'all') {
+      // if (buildConfig.platform === 'linux' || buildConfig.platform === 'all') {
         // add buildVersion and appVersion
         getPackageInfo(['version'], '.')
         .then((result) => {
@@ -123,7 +125,7 @@ function bundleApp () {
             fs.writeFileSync(path.join(appPath, 'buildVersion'), buildConfig.buildVersion || buildConfig.appVersion)
           })
         })
-      }
+      //}
       console.log(`\n${doneLog}\n`)
     }
   })
@@ -132,6 +134,7 @@ function bundleApp () {
 {{/if_eq}}
 function web () {
   del.sync(['dist/web/*', '!.gitkeep'])
+  webConfig.mode = 'production'
   webpack(webConfig, (err, stats) => {
     if (err || stats.hasErrors()) console.log(err)
 

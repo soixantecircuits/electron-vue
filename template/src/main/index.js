@@ -26,22 +26,36 @@ function createWindow () {
     useContentSize: true,
     width: 1000
   }
-
   {{#isEnabled plugins 'standard-settings'}}
   options = require('assignment')(options, global.settings.window)
-  {{/isEnabled}}
-  mainWindow = new BrowserWindow(options)
-
+  mainWindow = new BrowserWindow(options) 
+  if (global.settings.simulateOutage) {
+    mainWindow.webContents.session.enableNetworkEmulation({offline: true})
+  }
+  if (global.settings.openDevTools) {
+    mainWindow.webContents.openDevTools()
+  }
+  if (global.settings.clearCache) {
+    console.warn('⚠️ - Option to clear cache set, cache will be cleared')
+    mainWindow.webContents.session.clearStorageData({}, () => {
+      mainWindow.webContents.session.clearCache(() => {
+        console.log('cache cleared.')
+        mainWindow.loadURL(winURL)
+      })
+    })
+  } else {
+    mainWindow.loadURL(winURL)
+  }
+  {{else}}
   mainWindow.loadURL(winURL)
-
+  {{/isEnabled}}
+  
   mainWindow.on('closed', () => {
     mainWindow = null
   })
 }
 {{#isEnabled plugins 'standard-settings'}}
-
 global.settings = require('standard-settings').getSettings()
-
 if (global.settings.appendSwitch) {
   Object.keys(global.settings.appendSwitch).forEach((key) => {
     if (global.settings.appendSwitch[key] !== '') {

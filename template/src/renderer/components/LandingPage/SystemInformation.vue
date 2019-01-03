@@ -16,11 +16,11 @@
         <div class="name">Vue.js:</div>
         <div class="value">\{{ vue }}</div>
       </div>
-      <div class="item">
+      <div class="item" v-if="!isWeb">
         <div class="name">Electron:</div>
         <div class="value">\{{ electron }}</div>
       </div>
-      <div class="item">
+      <div class="item" v-if="!isWeb">
         <div class="name">Node:</div>
         <div class="value">\{{ node }}</div>
       </div>
@@ -43,7 +43,8 @@
     </div>
     {{#isEnabled plugins 'vue-spacebro-client'}}
     {{#isEnabled plugins 'vuex'}}
-    <img :src="media.url" :alt="media.meta.description"/></img>
+    <span v-html="media.meta.description" v-if="!media.url"></span>
+    <img :src="media.url" :alt="media.meta.description" v-show="media.url"/>
     {{/isEnabled}}
     {{/isEnabled}}
   </div>
@@ -60,12 +61,19 @@
 
   {{/isEnabled}}
   export default {
+    computed: {
+      {{#isEnabled plugins 'vue-spacebro-client'}}
+      {{#isEnabled plugins 'vuex'}}
+      ...mapState({
+        media: state => state.Media.media
+      }),
+      {{/isEnabled}}
+      {{/isEnabled}}
+      isWeb () {
+        return typeof process !== 'undefined' && process.env.IS_WEB
+      }
+    },
     {{#isEnabled plugins 'vue-spacebro-client'}}
-    {{#isEnabled plugins 'vuex'}}
-    computed: mapState({
-      media: state => state.Media.media
-    }),
-    {{/isEnabled}}
     spacebroEvents: {
       connect: function () {
         this.$spacebro.emit(this.$spacebro.config.client.out.outMessage.eventName, {message: 'thank you'})
@@ -86,13 +94,13 @@
 
       {{/isEnabled}}
       return {
-        electron: process.versions['atom-shell'],
+        electron: process.versions.electron,
         {{#isEnabled plugins 'vue-router'}}
-        name: 'landing-page',
+        name: this.$route.name,
         {{/isEnabled}}
         node: process.versions.node,
         {{#isEnabled plugins 'vue-router'}}
-        path: '/',
+        path: this.$route.path,
         {{/isEnabled}}
         platform: require('os').platform(),
         {{#isEnabled plugins 'standard-settings'}}

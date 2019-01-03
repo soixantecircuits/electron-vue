@@ -12,9 +12,12 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 const mainConfig = require('./webpack.main.config')
 const rendererConfig = require('./webpack.renderer.config')
 
+const settings = require('standard-settings').getSettings()
+
 let electronProcess = null
 let manualRestart = false
 let hotMiddleware
+
 
 function logStats (proc, data) {
   let log = ''
@@ -41,21 +44,21 @@ function logStats (proc, data) {
 function startRenderer () {
   return new Promise((resolve, reject) => {
     rendererConfig.entry.renderer = [path.join(__dirname, 'dev-client')].concat(rendererConfig.entry.renderer)
-
+    rendererConfig.mode = 'development'
     const compiler = webpack(rendererConfig)
-    hotMiddleware = webpackHotMiddleware(compiler, { 
-      log: false, 
-      heartbeat: 2500 
+    hotMiddleware = webpackHotMiddleware(compiler, {
+      log: false,
+      heartbeat: 2500
     })
 
-    compiler.plugin('compilation', compilation => {
-      compilation.plugin('html-webpack-plugin-after-emit', (data, cb) => {
+    compiler.hooks.compilation.tap('compilation', compilation => {
+      compilation.hooks.htmlWebpackPluginAfterEmit.tapAsync('html-webpack-plugin-after-emit', (data, cb) => {
         hotMiddleware.publish({ action: 'reload' })
         cb()
       })
     })
 
-    compiler.plugin('done', stats => {
+    compiler.hooks.done.tap('done', stats => {
       logStats('Renderer', stats)
     })
 
@@ -64,7 +67,7 @@ function startRenderer () {
       {
         contentBase: path.join(__dirname, '../'),
         quiet: true,
-        setup (app, ctx) {
+        before (app, ctx) {
           app.use(hotMiddleware)
           ctx.middleware.waitUntilValid(() => {
             resolve()
@@ -80,10 +83,10 @@ function startRenderer () {
 function startMain () {
   return new Promise((resolve, reject) => {
     mainConfig.entry.main = [path.join(__dirname, '../src/main/index.dev.js')].concat(mainConfig.entry.main)
-
+    mainConfig.mode = 'development'
     const compiler = webpack(mainConfig)
 
-    compiler.plugin('watch-run', (compilation, done) => {
+    compiler.hooks.watchRun.tapAsync('watch-run', (compilation, done) => {
       logStats('Main', chalk.white.bold('compiling...'))
       hotMiddleware.publish({ action: 'compiling' })
       done()
@@ -114,7 +117,19 @@ function startMain () {
 }
 
 function startElectron () {
-  let args = ['--inspect=5858', path.join(__dirname, '../dist/electron/main.js')]
+
+  var args = [
+    '--inspect=5858',
+    path.join(__dirname, '../dist/electron/main.js')
+  ]
+
+  // detect yarn or npm and process commandline args accordingly
+  if (process.env.npm_execpath.endsWith('yarn.js')) {
+    args = args.concat(process.argv.slice(3))
+  } else if (process.env.npm_execpath.endsWith('npm-cli.js')) {
+    args = args.concat(process.argv.slice(2))
+  }
+
   {{#isEnabled plugins 'standard-settings'}}
   args = args.concat(process.argv.slice(2))
   {{/isEnabled}}
@@ -124,7 +139,19 @@ function startElectron () {
     electronLog(data, 'blue')
   })
   electronProcess.stderr.on('data', data => {
-    electronLog(data, 'red')
+    if (data.includes('Debugger listening on')) {
+      electronLog(data, 'blue')  
+    } else if (data.includes('Couldn\'t set selectedTextBackgroundColor from default') ||
+    data.includes('Could not instantiate: ProductRegistryImpl.Registry') ||
+    data.includes('Sending message to WebContents with') ||
+    data.includes('"Failed to load https://chrome-devtools-frontend.appspot.com/serve_file/') ||
+    data.includes('"Extension server error: Object not found: <top>", source: chrome-devtools://devtools/bundled/inspector.js (7574)')) {
+      if(settings.electronMain.dev.showBareErrors) {
+        electronLog(data, 'red')
+      }
+    } else {
+      electronLog(data, 'red')
+    }
   })
 
   electronProcess.on('close', () => {
