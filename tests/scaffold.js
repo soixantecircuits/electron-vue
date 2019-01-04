@@ -1,6 +1,5 @@
 'use strict'
 
-const mkdirp = require('mkdirp')
 const projectDir = process.env.SEMAPHORE_PROJECT_DIR
 const templateName = process.argv[2]
 
