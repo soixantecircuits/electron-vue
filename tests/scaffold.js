@@ -1,5 +1,6 @@
 'use strict'
 
+const mkdirp = require('mkdirp')
 const projectDir = process.env.SEMAPHORE_PROJECT_DIR
 const templateName = process.argv[2]
 
@@ -9,13 +10,16 @@ const template = require('./builds.json')[templateName]
 const YELLOW = '\x1b[33m'
 const END = '\x1b[0m'
 
-process.chdir(process.cwd() + '/builds')
+let workDir = process.cwd() + '/builds'
+console.log(`process.chdir: ${workDir}`)
+mkdirp(workDir)
+process.chdir(workDir)
 
 generate(templateName, template)
 
 setTimeout(() => {
   process.exit()
-}, 4000)
+}, 5000)
 
 function generate (key, build) {
   console.log(`${YELLOW}Generating \`${key}\`${END}`)
@@ -32,12 +36,12 @@ function generate (key, build) {
     .when(/unit/g).respond(build[8])
     .when(/end-to-end/g).respond(build[9])
     .when(/build tool/g).respond(build[10])
-    .when(/author/g).respond(build[11])
+    .when(/worker/g).respond(build[11])
+    .when(/author/g).respond(build[12])
   .on('error', err => {
-    console.log(err.message)
+    console.error(err.message)
   })
   .end(code => {
     process.exit(code)
   })
 }
-

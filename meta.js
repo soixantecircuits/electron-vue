@@ -141,7 +141,8 @@ module.exports = {
     serviceWorker: {
       type: 'confirm',
       message: 'Setup service-worker?',
-      require: true
+      require: true,
+      default: true
     }
   },
   helpers: {

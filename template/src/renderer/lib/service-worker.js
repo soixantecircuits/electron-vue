@@ -1,6 +1,8 @@
 // @flow weak
 /* eslint-disable no-console */
+/* eslint no-restricted-globals: 1 */
 /* global self, caches, fetch, URL, compilationAssets, location */
+
 
 const DEBUG = false
 
@@ -66,7 +68,7 @@ self.addEventListener('message', event => {
     console.log('[SW] Received Message: ' + event.data)
   }
   if (event.data.settings) {
-    settings = event.data.settings
+    settings = Object.assign({}, event.data.settings)
   }
   switch (event.data.action) {
     case 'skipWaiting':
@@ -131,7 +133,7 @@ var networkGet = (request) => {
 }
 
 self.addEventListener('fetch', event => {
-  let request = event.request
+  const {request} = event
 
   if (settings && settings.serviceWorker && !settings.serviceWorker.enable) {
     if (DEBUG) {

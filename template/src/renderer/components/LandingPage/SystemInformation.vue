@@ -85,11 +85,11 @@
     {{/isEnabled}}
     data () {
       {{#isEnabled plugins 'standard-settings'}}
-      let customSetting
+      let customSettingContent
       if (settings) {
-        customSetting = settings.customSetting
+        customSettingContent = settings.customSetting
       } else {
-        customSetting = 'missing setting'
+        customSettingContent = 'missing setting'
       }
 
       {{/isEnabled}}
@@ -104,7 +104,7 @@
         {{/isEnabled}}
         platform: require('os').platform(),
         {{#isEnabled plugins 'standard-settings'}}
-        customSetting: customSetting,
+        customSetting: customSettingContent,
         {{/isEnabled}}
         {{#isEnabled plugins 'vue-spacebro-client'}}
         message: 'start',

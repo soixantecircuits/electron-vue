@@ -1,9 +1,8 @@
 {{#if_eq eslintConfig 'standard'}}
 'use strict'
-
 {{/if_eq}}
 import { app, BrowserWindow } from 'electron'{{#if_eq eslintConfig 'airbnb'}} // eslint-disable-line{{/if_eq}}
-
+/* eslint-disable no-console*/
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
