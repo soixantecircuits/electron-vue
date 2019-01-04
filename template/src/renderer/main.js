@@ -2,6 +2,13 @@ import Vue from 'vue'
 {{#isEnabled plugins 'axios'}}
 import axios from 'axios'
 {{/isEnabled}}
+{{#isEnabled plugins 'vuex'}}
+{{#isEnabled plugins 'vue-router'}}
+{{#isEnabled plugins 'vuex-router-sync'}}
+import { sync } from 'vuex-router-sync'
+{{/isEnabled}}
+{{/isEnabled}}
+{{/isEnabled}}
 {{#isEnabled plugins 'vue-spacebro-client'}}
 import VueSpacebroClient from 'vue-spacebro-client'
 {{/isEnabled}}
@@ -14,13 +21,6 @@ import router from './router'
 {{/isEnabled}}
 {{#isEnabled plugins 'vuex'}}
 import store from './store'
-{{/isEnabled}}
-{{#isEnabled plugins 'vuex'}}
-{{#isEnabled plugins 'vue-router'}}
-{{#isEnabled plugins 'vuex-router-sync'}}
-import { sync } from 'vuex-router-sync'
-{{/isEnabled}}
-{{/isEnabled}}
 {{/isEnabled}}
 {{#if serviceWorker}}
 require('@/lib/sw-register')
