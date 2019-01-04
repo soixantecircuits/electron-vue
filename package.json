@@ -1,6 +1,6 @@
 {
   "name": "electron-vue",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "An Electron & Vue.js quick start boilerplate with vue-cli support",
   "main": "meta.js",
   "repository": {
