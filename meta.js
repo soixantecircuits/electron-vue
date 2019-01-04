@@ -79,8 +79,8 @@ module.exports = {
     plugins: {
       type: 'checkbox',
       message: 'Select which Vue plugins to install (vuex-electron not supported with vue-spacebro-client)',
-      choices: ['axios', 'vue-electron', 'vue-router', 'vuex', 'vuex-electron', 'vue-spacebro-client', 'standard-settings'],
-      default: ['axios', 'vue-electron', 'vue-router', 'vuex', 'vue-spacebro-client', 'standard-settings']
+      choices: ['axios', 'vue-electron', 'vue-router', 'vuex', 'vuex-router-sync', 'vuex-electron', 'vue-spacebro-client', 'standard-settings'],
+      default: ['axios', 'vue-electron', 'vue-router', 'vuex', 'vuex-router-sync', 'vue-spacebro-client', 'standard-settings']
     },
     eslint: {
       type: 'confirm',
@@ -157,6 +157,7 @@ module.exports = {
         'vue-electron': '^1.0.6',
         'vue-router': '^3.0.1',
         'vuex': '^3.0.1',
+        'vuex-router-sync': '^5.0.0',
         'vuex-electron': '^1.0.0',
         'vue-spacebro-client': '^1.0.0',
         'standard-settings': '^1.1.15'

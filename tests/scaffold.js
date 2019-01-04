@@ -12,7 +12,6 @@ const END = '\x1b[0m'
 
 let workDir = process.cwd() + '/builds'
 console.log(`process.chdir: ${workDir}`)
-mkdirp(workDir)
 process.chdir(workDir)
 
 generate(templateName, template)

@@ -4,17 +4,23 @@ import axios from 'axios'
 {{/isEnabled}}
 {{#isEnabled plugins 'vue-spacebro-client'}}
 import VueSpacebroClient from 'vue-spacebro-client'
+{{/isEnabled}}
 {{#isEnabled plugins 'standard-settings'}}
 import settings from '@/lib/settings'
 {{/isEnabled}}
-{{/isEnabled}}
-
 import App from './App'
 {{#isEnabled plugins 'vue-router'}}
 import router from './router'
 {{/isEnabled}}
 {{#isEnabled plugins 'vuex'}}
 import store from './store'
+{{/isEnabled}}
+{{#isEnabled plugins 'vuex'}}
+{{#isEnabled plugins 'vue-router'}}
+{{#isEnabled plugins 'vuex-router-sync'}}
+import { sync } from 'vuex-router-sync'
+{{/isEnabled}}
+{{/isEnabled}}
 {{/isEnabled}}
 {{#if serviceWorker}}
 require('@/lib/sw-register')
@@ -73,7 +79,13 @@ Vue.use(VueSpacebroClient, config, store)
 Vue.use(VueSpacebroClient, config)
 {{/isEnabled}}
 {{/isEnabled}}
-
+{{/isEnabled}}
+{{#isEnabled plugins 'vuex'}}
+{{#isEnabled plugins 'vue-router'}}
+{{#isEnabled plugins 'vuex-router-sync'}}
+sync(store, router)
+{{/isEnabled}}
+{{/isEnabled}}
 {{/isEnabled}}
 /* eslint-disable no-new */
 new Vue({
