@@ -130,3 +130,9 @@ app.on('ready', () => {
 })
  */
 {{/if_eq}}
+process.on('uncaughtException', function (err) {
+  console.error('Uncaugh exception: ' + err)
+})
+process.on('unhandledRejection', (reason, p) => {
+  console.error('Unhandled Rejection at:', p, 'reason:', reason)
+})
