@@ -6,13 +6,14 @@
     "kiosk": true,
     "autoHideMenuBar": true,
     "webPreferences": {
-      "plugins": true,
+      "allowRunningInsecureContent": true,
+      "allowDisplayingInsecureContent": true,
       "directWrite": true,
-      "webSecurity": false,
       "experimentalFeatures": false,
       "experimentalCanvasFeatures": false,
-      "allowRunningInsecureContent": true,
-      "allowDisplayingInsecureContent": true
+      "nodeIntegration": true,
+      "plugins": true,
+      "webSecurity": false
     }
   },
   "electronMain": {

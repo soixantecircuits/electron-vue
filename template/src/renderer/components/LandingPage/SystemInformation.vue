@@ -61,6 +61,34 @@
 
   {{/isEnabled}}
   export default {
+    data () {
+      {{#isEnabled plugins 'standard-settings'}}
+      let customSettingContent
+      if (settings) {
+        customSettingContent = settings.customSetting
+      } else {
+        customSettingContent = 'missing setting'
+      }
+      {{/isEnabled}}
+      return {
+        electron: process.versions.electron,
+        {{#isEnabled plugins 'vue-router'}}
+        name: this.$route.name,
+        {{/isEnabled}}
+        node: process.versions.node,
+        {{#isEnabled plugins 'vue-router'}}
+        path: this.$route.path,
+        {{/isEnabled}}
+        platform: require('os').platform(),
+        {{#isEnabled plugins 'standard-settings'}}
+        customSetting: customSettingContent,
+        {{/isEnabled}}
+        {{#isEnabled plugins 'vue-spacebro-client'}}
+        message: 'start',
+        {{/isEnabled}}
+        vue: require('vue/package.json').version
+      }
+    },
     computed: {
       {{#isEnabled plugins 'vue-spacebro-client'}}
       {{#isEnabled plugins 'vuex'}}
@@ -81,37 +109,8 @@
       inMessage: function (data) {
         this.message = data.message
       }
-    },
-    {{/isEnabled}}
-    data () {
-      {{#isEnabled plugins 'standard-settings'}}
-      let customSettingContent
-      if (settings) {
-        customSettingContent = settings.customSetting
-      } else {
-        customSettingContent = 'missing setting'
-      }
-
-      {{/isEnabled}}
-      return {
-        electron: process.versions.electron,
-        {{#isEnabled plugins 'vue-router'}}
-        name: this.$route.name,
-        {{/isEnabled}}
-        node: process.versions.node,
-        {{#isEnabled plugins 'vue-router'}}
-        path: this.$route.path,
-        {{/isEnabled}}
-        platform: require('os').platform(),
-        {{#isEnabled plugins 'standard-settings'}}
-        customSetting: customSettingContent,
-        {{/isEnabled}}
-        {{#isEnabled plugins 'vue-spacebro-client'}}
-        message: 'start',
-        {{/isEnabled}}
-        vue: require('vue/package.json').version
-      }
     }
+    {{/isEnabled}}
   }
 </script>
 
