@@ -3,13 +3,8 @@
   "env": {
 {{#testing unit e2e}}
     "test": {
-      "presets": [
-        ["env", {
-          "targets": { "node": 7 }
-        }],
-        "stage-0"
-      ],
-      "plugins": ["istanbul"]
+      "plugins": ["istanbul"],
+      "presets": ["@babel/preset-env"]
     },
 {{/testing}}
 "main": {

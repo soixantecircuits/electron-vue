@@ -16,6 +16,7 @@ process.env.BABEL_ENV = 'test'
 
 let webpackConfig = merge(baseConfig, {
   devtool: '#inline-source-map',
+  mode: 'development',
   plugins: [
     new webpack.DefinePlugin({
       {{#isEnabled plugins 'standard-settings'}}
@@ -52,7 +53,8 @@ module.exports = config => {
     customLaunchers: {
       'visibleElectron': {
         base: 'Electron',
-        flags: ['--show']
+        flags: ['--show'],
+        require: path.join('test', 'unit', 'override.js')
       }
     },
     frameworks: ['mocha', 'chai'],

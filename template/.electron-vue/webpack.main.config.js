@@ -6,7 +6,7 @@ const path = require('path')
 const { dependencies } = require('../package.json')
 const webpack = require('webpack')
 
-const BabiliWebpackPlugin = require('babili-webpack-plugin')
+const MinifyPlugin = require('babel-minify-webpack-plugin')
 
 {{#isEnabled plugins 'standard-settings'}}
 var NoOperationPlugin = function (pattern) {
@@ -23,6 +23,7 @@ var NoOperationPlugin = function (pattern) {
 {{/isEnabled}}
 
 let mainConfig = {
+  mode: 'development',
   entry: {
     main: path.join(__dirname, '../src/main/index.js')
   },
@@ -107,7 +108,7 @@ if (process.env.NODE_ENV !== 'production') {
  */
 if (process.env.NODE_ENV === 'production') {
   mainConfig.plugins.push(
-    new BabiliWebpackPlugin(),
+    new MinifyPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
     })
